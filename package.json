@@ -1,0 +1,23 @@
+{
+    "name": "peerjs-server-for-design-ai-lab",
+    "version": "1.0.0",
+    "description": "design-ai-lab 的peerjs服务端",
+    "main": "index.js",
+    "scripts": {
+        "start": "pm2 start index.js --name 'peerjs-server'",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/shadowcz007/peerjs-server-for-design-ai-lab.git"
+    },
+    "author": "shadow",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/shadowcz007/peerjs-server-for-design-ai-lab/issues"
+    },
+    "homepage": "https://github.com/shadowcz007/peerjs-server-for-design-ai-lab#readme",
+    "dependencies": {
+        "peer": "^0.6.1"
+    }
+}
