@@ -17,7 +17,7 @@ const customGenerationFunction = () => {
 };
 const peerServer = PeerServer({
     port: 9000,
-    debug: true,
+    // debug: true,
     // proxied: true,
     path: '/myapp',
     // ssl: {
