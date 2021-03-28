@@ -1,6 +1,9 @@
 # peerjs-server-for-design-ai-lab
 design-ai-lab 的peerjs服务端
 
+- 提供当前所有连接的peer id
+- peerjs的服务端
+
 运行服务：
 ```bash
 npm start

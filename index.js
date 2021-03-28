@@ -1,18 +1,17 @@
 const { PeerServer } = require('peer');
-// const peerServer = ExpressPeerServer(server, {
-//     debug: true,
-//     path: '/myapp',
-//     // port: 9000
-// });
-// console.log(server)
+const WebSocket = require('ws');
 
-// const makeCert=require('make-cert');
-// const {key, cert} = makeCert('localhost');
-// console.log(key)
-// console.log(cert)
+let peerIds = {};
+
+const wss = new WebSocket.Server({ port: 9001 });
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(message) {
+        // console.log('received: %s', message);
+        ws.send(peerIds);
+    });
+});
 
 const customGenerationFunction = () => {
-    // console.log(data)
     return (Math.random().toString(36) + '0000000000000000000').substr(2, 16)
 };
 const peerServer = PeerServer({
@@ -20,15 +19,13 @@ const peerServer = PeerServer({
     // debug: true,
     // proxied: true,
     path: '/myapp',
-    // ssl: {
-    //     key: server.key,
-    //     cert: server.cert
-    // },
     generateClientId: customGenerationFunction
 });
 peerServer.on('connection', c => {
-    console.log('connection', c.id)
+    // console.log('connection', c.id)
+    peerIds[c.id] = (new Date()).getTime();
 });
 peerServer.on('disconnect', c => {
-    console.log('disconnect', c.id)
+    // console.log('disconnect', c.id);
+    delete peerIds[c.id];
 });
